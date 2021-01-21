@@ -6,6 +6,7 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import { connectDatabase } from "./DBConfig.js";
 import { userRoutes } from "./routes/userRoutes.js";
 import { PostRoutes } from "./routes/productRoutes.js";
+import cors from "cors";
 
 // injects all the environment variables
 dotenv.config();
@@ -14,6 +15,7 @@ dotenv.config();
 connectDatabase();
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
