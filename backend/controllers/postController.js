@@ -146,8 +146,9 @@ const likePost = asyncHandler(async (req, res) => {
       // checks whether user is in the likes array or not
       // if yes, remove user from the likes array and push user into dislikes array
       if (post.dislikes.includes(user)) {
-        post.dislikes.filter((userId) => userId.toString() !== user.toString());
-        console.log(post.dislikes);
+        post.dislikes = post.dislikes.filter(
+          (userId) => userId.toString() !== user.toString()
+        );
       }
       post.likes.push(user);
       await post.save();
@@ -181,7 +182,9 @@ const dislikePost = asyncHandler(async (req, res) => {
       // checks whether user is in the dislikes array or not
       // if yes, remove user from the dislike array and push user into likes array
       if (post.likes.includes(user)) {
-        post.likes.filter((userId) => userId.toString() !== user.toString());
+        post.likes = post.likes.filter(
+          (userId) => userId.toString() !== user.toString()
+        );
         console.log(post.likes);
       }
       post.dislikes.push(user);
