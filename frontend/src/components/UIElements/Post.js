@@ -4,9 +4,11 @@ import { Button } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import _ from "lodash";
 import "./Post.css";
 
 const Post = ({ post }) => {
+  const commentsNum = _.size(post.comments);
   // extracts user info from local storage
   return (
     <Card className="my-3 py-3 rounded">
@@ -32,7 +34,7 @@ const Post = ({ post }) => {
                 <i className="fas fa-thumbs-down"></i>
               </span>
               <Link className="mx-2" to={`/posts/${post._id}`}>
-                Comments
+                {commentsNum} Comments
               </Link>
             </Col>
           </Row>

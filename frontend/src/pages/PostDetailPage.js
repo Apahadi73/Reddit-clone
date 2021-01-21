@@ -35,12 +35,25 @@ export const PostDetailPage = ({ match }) => {
             <p style={{ whiteSpace: "pre-wrap", overflowWrap: "break-word" }}>
               {post.content}
             </p>
+            <Row className="my-3">
+              <Col className="sm-6">
+                <span className="mx-2">
+                  <i className="fas fa-thumbs-up"></i>
+                </span>
+                <span className="mx-2">
+                  <i className="fas fa-thumbs-down"></i>
+                </span>
+                <span className="mx-2">{comments.length} Comments</span>
+              </Col>
+            </Row>
             <CommentBox />
           </Card.Text>
+
           {comments.length > 0 && (
             <div>
               {comments.map((comment) => (
                 <Comment
+                  key={comment._id}
                   comment={comment.content}
                   userName={comment.userName}
                 />

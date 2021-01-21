@@ -125,6 +125,69 @@ const createPostComment = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Like a comment
+// @route   POST /api/posts/:id/like
+// @access  Private
+const likePost = asyncHandler(async (req, res) => {
+  const { user } = req.body;
+
+  // finds the post
+  const post = await Post.findById(req.params.id);
+
+  if (post) {
+    // checks whether user is in the like array or not
+    if (post.likes.includes(user)) {
+      res.status(200);
+      throw new Error("You already liked this post.");
+    }
+
+    // TODO: work on this logic. need refinement since user is being added in both
+    // checks whether user is in the likes array or not
+    // if yes, remove user from the likes array and push user into dislikes array
+    if (post.dislikes.includes(user)) {
+      post.dislikes.filter((userId) => userId.toString() !== user.toString());
+      console.log(post.dislikes);
+    }
+    post.likes.push(user);
+    await post.save();
+    res.status(201).json({ message: "Comment liked" });
+  } else {
+    res.status(404);
+    throw new Error("Something went wrong!");
+  }
+});
+
+// @desc    Like a comment
+// @route   POST /api/posts/:id/like
+// @access  Private
+const dislikePost = asyncHandler(async (req, res) => {
+  const { user } = req.body;
+
+  // finds the post
+  const post = await Post.findById(req.params.id);
+
+  if (post) {
+    // checks whether user is in the like array or not
+    if (post.dislikes.includes(user)) {
+      res.status(200);
+      throw new Error("You already disliked this post.");
+    }
+
+    // checks whether user is in the dislikes array or not
+    // if yes, remove user from the dislike array and push user into likes array
+    if (post.likes.includes(user)) {
+      post.likes.filter((userId) => userId.toString() !== user.toString());
+      console.log(post.likes);
+    }
+    post.dislikes.push(user);
+    await post.save();
+    res.status(201).json({ message: "Comment disliked" });
+  } else {
+    res.status(404);
+    throw new Error("Something went wrong!");
+  }
+});
+
 export {
   getPosts,
   getPostById,
@@ -132,4 +195,6 @@ export {
   createPost,
   updatePost,
   createPostComment,
+  likePost,
+  dislikePost,
 };

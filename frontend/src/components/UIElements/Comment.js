@@ -6,9 +6,7 @@ function Comment({ comment, userName }) {
     <Card className="m-3">
       <Card.Body>
         <p>{comment}</p>
-        <p className="creator">
-          Posted by <bold>{userName}</bold>
-        </p>
+        <p className="creator">Posted by {userName}</p>
       </Card.Body>
     </Card>
   );
