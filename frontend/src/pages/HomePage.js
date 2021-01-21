@@ -10,7 +10,6 @@ const HomePage = () => {
     // fetches posts from the backend
     const fetchPosts = async () => {
       const { data } = await axios.get("/api/posts");
-      console.log(data);
       setPosts(data);
     };
     fetchPosts();
