@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
-import { Link, Route, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { logout } from "../../state/actions/userActions";
 
 const Header = () => {
@@ -27,6 +27,9 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto right">
+            <Link>
+              <i class="fas fa-edit" style={{ fontSize: "2rem" }}></i>
+            </Link>
             {userInfo ? (
               <NavDropdown title={userInfo.name} id="userName">
                 <NavDropdown.Item>

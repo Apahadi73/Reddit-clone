@@ -14,6 +14,7 @@ const commentSchema = mongoose.Schema(
 
 const postSchema = mongoose.Schema(
   {
+    userName: { type: String, required: true },
     user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
     title: { type: String, required: true },
     content: { type: String },

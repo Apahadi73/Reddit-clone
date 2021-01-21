@@ -61,8 +61,9 @@ const deletePost = asyncHandler(async (req, res) => {
 // @route   POST /api/posts
 // @access  Private/Admin
 const createPost = asyncHandler(async (req, res) => {
-  const { title, content, user } = req.body;
+  const { title, content, user, userName } = req.body;
   const newPost = new Post({
+    userName: userName,
     user: user,
     title: title,
     content: content,

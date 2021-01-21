@@ -1,23 +1,29 @@
 const posts = [
   {
-    title: "Ravi",
+    userName: "Ravi",
+    title: "Biden inauguration live updates: Biden takes over at White House",
     content:
-      "asdasdjfgsdgufgasdg fxcb hjg zxkcsd gasdhuadgfkbwihgfyigdbchjsgadgcasbdifg sadhiasgyifsddigasifhsgdifisdifgiasgkbsad sdchbjhsaddchbshadgcisdkcbiayefuhew hiagsd",
+      "Despite some positive outlook, the report said incidence in coastal areas of the Southeast may continue to worsen into February as people attempt to escape the winter weather.",
   },
   {
-    title: "Samir",
+    userName: "Samir",
+    title:
+      "Coronavirus live updates: US surgeon general resigns, saying, 'I wasn't always right",
     content:
-      "asdasdjfgsdgufgasdg fxcb hjg zxkcsd gasdhuadgfkbwihgfyigdbchjsgadgcasbdifg sadhiasgyifsddigasifhsgdifisdifgiasgkbsad sdchbjhsaddchbshadgcisdkcbiayefuhew hiagsd",
+      "Despite some positive outlook, the report said incidence in coastal areas of the Southeast may continue to worsen into February as people attempt to escape the winter weather.",
+  },
+
+  {
+    userName: "Samir",
+    title: "US reports daily death record",
+    content:
+      "Despite some positive outlook, the report said incidence in coastal areas of the Southeast may continue to worsen into February as people attempt to escape the winter weather.",
   },
   {
-    title: "amir",
+    userName: "Samir",
+    title: "US may be 'rounding a corner,' PolicyLab researchers say",
     content:
-      "asdasdjfgsdgufgasdg fxcb hjg zxkcsd gasdhuadgfkbwihgfyigdbchjsgadgcasbdifg sadhiasgyifsddigasifhsgdifisdifgiasgkbsad sdchbjhsaddchbshadgcisdkcbiayefuhew hiagsd",
-  },
-  {
-    title: "Sanskar",
-    content:
-      "asdasdjfgsdgufgasdg fxcb hjg zxkcsd gasdhuadgfkbwihgfyigdbchjsgadgcasbdifg sadhiasgyifsddigasifhsgdifisdifgiasgkbsad sdchbjhsaddchbshadgcisdkcbiayefuhew hiagsd",
+      "Despite some positive outlook, the report said incidence in coastal areas of the Southeast may continue to worsen into February as people attempt to escape the winter weather.",
   },
 ];
 
