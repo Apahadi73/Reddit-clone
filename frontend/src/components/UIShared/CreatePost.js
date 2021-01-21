@@ -4,39 +4,54 @@ import { Button } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { createPost } from "../../state/actions/postActions";
 import Message from "./Message";
+import Loader from "./Loader";
+import { useHistory } from "react-router-dom";
 
 // component to create a new post and publish it to the database
-function CreatePost() {
+function CreatePost({ closePostBox }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isValid, setValidity] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
+  // creates dispatch object
   const dispatch = useDispatch();
-  const userRegister = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userRegister;
 
+  // fetches state from store
+  const postCreator = useSelector((state) => state.postCreate);
+  const { loading, error, success } = postCreator;
+
+  //validates the form and calls create post action
   const onSubmitButtonPressed = () => {
     if (title.legnth <= 0 || title === "") {
       setErrorMessage("Title must be at least 5 charactes long");
       setValidity(false);
     } else {
-      const post = {
-        user: userInfo._id,
-        title,
-        content,
-        userName: userInfo.name,
+      // gets userinfo from the local storage
+      const userInfo = localStorage.getItem("userInfo");
+      const { _id, name } = JSON.parse(userInfo);
+      const newPost = {
+        user: _id,
+        title: title,
+        content: content,
+        userName: name,
       };
-      console.log(post);
+      dispatch(createPost(newPost));
+      if (success) {
+        closePostBox();
+      }
     }
   };
   return (
     <Card className="bg-success">
       <Card.Body>
         <h1>Create a New Post</h1>
+        {!isValid && <Message variant="danger">{errorMessage}</Message>}
+        {error && <Message variant="danger">{error}</Message>}
+        {loading && <Loader />}
         <Form onSubmit={(event) => event.prevenDefaults()}>
-          {!isValid && <Message variant="danger">{errorMessage}</Message>}
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>
               <b>Title of the Post</b>

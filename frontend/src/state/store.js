@@ -8,12 +8,18 @@ import {
   userUpdateProfileReducer,
 } from "./reducers/userReducers";
 
+import { postCreateReducer } from "./reducers/postReducers";
+
+// all reducers
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
+  postCreate: postCreateReducer,
 });
+
+// all middlewares
 const middleware = [thunk];
 
 // retries user info from the local storage

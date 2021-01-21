@@ -22,36 +22,12 @@ export const USER_UPDATE_PROFILE_SUCCESS = "USER_UPDATE_PROFILE_SUCCESS";
 export const USER_UPDATE_PROFILE_FAIL = "USER_UPDATE_PROFILE_FAIL";
 export const USER_UPDATE_PROFILE_RESET = "USER_UPDATE_PROFILE_RESET";
 
-// Order section ------------------------------------------------------------------------------------------------
+// Post section ------------------------------------------------------------------------------------------------
 
-export const ORDER_CREATE_REQUEST = "ORDER_CREATE_REQUEST";
-export const ORDER_CREATE_SUCCESS = "ORDER_CREATE_SUCCESS";
-export const ORDER_CREATE_FAIL = "ORDER_CREATE_FAIL";
-export const ORDER_CREATE_RESET = "ORDER_CREATE_RESET";
-
-export const ORDER_DETAILS_REQUEST = "ORDER_DETAILS_REQUEST";
-export const ORDER_DETAILS_SUCCESS = "ORDER_DETAILS_SUCCESS";
-export const ORDER_DETAILS_FAIL = "ORDER_DETAILS_FAIL";
-export const ORDER_DETAILS_RESET = "ORDER_DETAILS_RESET";
-
-export const ORDER_PAY_REQUEST = "ORDER_PAY_REQUEST";
-export const ORDER_PAY_SUCCESS = "ORDER_PAY_SUCCESS";
-export const ORDER_PAY_FAIL = "ORDER_PAY_FAIL";
-export const ORDER_PAY_RESET = "ORDER_PAY_RESET";
-
-export const ORDER_LIST_MY_REQUEST = "ORDER_LIST_MY_REQUEST";
-export const ORDER_LIST_MY_SUCCESS = "ORDER_LIST_MY_SUCCESS";
-export const ORDER_LIST_MY_FAIL = "ORDER_LIST_MY_FAIL";
-export const ORDER_LIST_MY_RESET = "ORDER_LIST_MY_RESET";
-
-export const ORDER_LIST_REQUEST = "ORDER_LIST_REQUEST";
-export const ORDER_LIST_SUCCESS = "ORDER_LIST_SUCCESS";
-export const ORDER_LIST_FAIL = "ORDER_LIST_FAIL";
-
-export const ORDER_DELIVER_REQUEST = "ORDER_DELIVER_REQUEST";
-export const ORDER_DELIVER_SUCCESS = "ORDER_DELIVER_SUCCESS";
-export const ORDER_DELIVER_FAIL = "ORDER_DELIVER_FAIL";
-export const ORDER_DELIVER_RESET = "ORDER_DELIVER_RESET";
+export const POST_CREATE_REQUEST = "POST_CREATE_REQUEST";
+export const POST_CREATE_SUCCESS = "POST_CREATE_SUCCESS";
+export const POST_CREATE_FAIL = "POST_CREATE_FAIL";
+export const POST_CREATE_RESET = "POST_CREATE_RESET";
 
 // Product Constants ----------------------------------------------------------------------
 // action type constants for homepage actions
@@ -71,11 +47,6 @@ export const PRODUCT_DETAILS_FAIL = "PRODUCT_DETAILS_FAIL";
 export const PRODUCT_DELETE_REQUEST = "PRODUCT_DELETE_REQUEST";
 export const PRODUCT_DELETE_SUCCESS = "PRODUCT_DELETE_SUCCESS";
 export const PRODUCT_DELETE_FAIL = "PRODUCT_DELETE_FAIL";
-
-export const PRODUCT_CREATE_REQUEST = "PRODUCT_CREATE_REQUEST";
-export const PRODUCT_CREATE_SUCCESS = "PRODUCT_CREATE_SUCCESS";
-export const PRODUCT_CREATE_FAIL = "PRODUCT_CREATE_FAIL";
-export const PRODUCT_CREATE_RESET = "PRODUCT_CREATE_RESET";
 
 export const PRODUCT_UPDATE_REQUEST = "PRODUCT_UPDATE_REQUEST";
 export const PRODUCT_UPDATE_SUCCESS = "PRODUCT_UPDATE_SUCCESS";

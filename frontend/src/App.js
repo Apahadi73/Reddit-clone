@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/Navigation/Header";
@@ -9,21 +9,32 @@ import LoginScreen from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import { useState } from "react";
 import CreatePost from "./components/UIShared/CreatePost";
+import { useSelector } from "react-redux";
 function App() {
-  // TODO: remember to change the default state to false and make it disappear if the user logs out
-  const [isEditModeOn, setEditMode] = useState(true);
+  // TODO: work oncreate button
+  const [isEditModeOn, setEditMode] = useState(false);
 
   // opens post modal
   const createPost = () => {
     setEditMode(!isEditModeOn);
   };
 
+  const closePostBox = () => {
+    setEditMode(false);
+  };
+
+  // these are in place to make post box disappear when the user logs out
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
+
   return (
     <Router>
       <Header createPost={createPost} />
       <main className="py-4">
         <Container>
-          {isEditModeOn && <CreatePost />}
+          {isEditModeOn && userInfo && (
+            <CreatePost closePostBox={closePostBox} />
+          )}
           <Route path="/search/:keyword" component={HomePage} exact />
           <Route path="/page/:pageNumber" component={HomePage} exact />
           <Route
