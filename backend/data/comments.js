@@ -1,6 +1,5 @@
 const comments = [
   {
-    1: 
     2: [
       {
         id: 1,

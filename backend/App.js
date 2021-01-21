@@ -5,6 +5,7 @@ import morgan from "morgan";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import { connectDatabase } from "./DBConfig.js";
 import { userRoutes } from "./routes/userRoutes.js";
+import { PostRoutes } from "./routes/productRoutes.js";
 
 // injects all the environment variables
 dotenv.config();
@@ -20,6 +21,7 @@ if (process.env.NODE_ENV === "development") {
 
 // routes
 app.use("/api/users", userRoutes);
+app.use("/api/posts", PostRoutes);
 
 // error handler middlewares
 app.use(notFound);
