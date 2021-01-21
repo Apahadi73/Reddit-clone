@@ -29,11 +29,18 @@ export const POST_CREATE_SUCCESS = "POST_CREATE_SUCCESS";
 export const POST_CREATE_FAIL = "POST_CREATE_FAIL";
 export const POST_CREATE_RESET = "POST_CREATE_RESET";
 
+export const POST_LIST_REQUEST = "POST_LIST_REQUEST";
+export const POST_LIST_SUCCESS = "POST_LIST_SUCCESS";
+export const POST_LIST_FAIL = "POST_LIST_FAIL";
+
+// Comment Section ------------------------------- ------------------------------- -------------------------------
+export const COMMENT_CREATE_REQUEST = "COMMENT_CREATE_REQUEST";
+export const COMMENT_CREATE_SUCCESS = "COMMENT_CREATE_SUCCESS";
+export const COMMENT_CREATE_FAIL = "COMMENT_CREATE_FAIL";
+export const COMMENT_CREATE_RESET = "COMMENT_CREATE_RESET";
+
 // Product Constants ----------------------------------------------------------------------
 // action type constants for homepage actions
-export const PRODUCT_LIST_REQUEST = "PRODUCT_LIST_REQUEST";
-export const PRODUCT_LIST_SUCCESS = "PRODUCT_LIST_SUCCESS";
-export const PRODUCT_LIST_FAIL = "PRODUCT_LIST_FAIL";
 
 // action type constants for product detail actions
 export const PRODUCT_DETAIL_REQUEST = "PRODUCT_DETAIL_REQUEST";

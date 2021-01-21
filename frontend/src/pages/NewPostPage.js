@@ -4,13 +4,13 @@ import { Button } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { createPost } from "../../state/actions/postActions";
-import Message from "./Message";
-import Loader from "./Loader";
+import { createPost } from "../state/actions/postActions";
+import Message from "../components/UIShared/Message";
+import Loader from "../components/UIShared/Loader";
 import { useHistory } from "react-router-dom";
 
 // component to create a new post and publish it to the database
-function CreatePost({ closePostBox }) {
+function CreatePost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isValid, setValidity] = useState(true);
@@ -18,9 +18,10 @@ function CreatePost({ closePostBox }) {
 
   // creates dispatch object
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // fetches state from store
-  const postCreator = useSelector((state) => state.postCreate);
+  const postCreator = useSelector((state) => state.userLogin);
   const { loading, error, success } = postCreator;
 
   //validates the form and calls create post action
@@ -39,9 +40,8 @@ function CreatePost({ closePostBox }) {
         userName: name,
       };
       dispatch(createPost(newPost));
-      if (success) {
-        closePostBox();
-      }
+      history.push("/");
+      window.location.reload(false);
     }
   };
   return (

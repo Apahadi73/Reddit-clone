@@ -8,7 +8,11 @@ import {
   userUpdateProfileReducer,
 } from "./reducers/userReducers";
 
-import { postCreateReducer } from "./reducers/postReducers";
+import {
+  postCreateReducer,
+  postListReducer,
+  createCommentReducer,
+} from "./reducers/postReducers";
 
 // all reducers
 const reducer = combineReducers({
@@ -17,6 +21,8 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
   postCreate: postCreateReducer,
+  postList: postListReducer,
+  commentList: createCommentReducer,
 });
 
 // all middlewares

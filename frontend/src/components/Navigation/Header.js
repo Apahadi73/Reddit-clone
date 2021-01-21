@@ -7,7 +7,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { logout } from "../../state/actions/userActions";
 
-const Header = ({ createPost }) => {
+const Header = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   // get userInfo from store
@@ -16,11 +16,6 @@ const Header = ({ createPost }) => {
   const logoutHandler = () => {
     dispatch(logout());
     history.push("/");
-  };
-
-  const onButtonPressed = () => {
-    // opens modal when user clicks the create post button
-    createPost(true);
   };
 
   return (
@@ -36,9 +31,9 @@ const Header = ({ createPost }) => {
           <Nav className="ml-auto right">
             {userInfo ? (
               <React.Fragment>
-                <Button onClick={onButtonPressed}>
-                  <i className="fas fa-edit" style={{ fontSize: "1.5rem" }}></i>
-                </Button>
+                <Link to="/newpost">
+                  <i className="fas fa-edit" style={{ fontSize: "2rem" }}></i>
+                </Link>
                 <NavDropdown title={userInfo.name} id="userName">
                   <NavDropdown.Item>
                     <Link to="#">Profile</Link>
