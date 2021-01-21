@@ -1,4 +1,7 @@
 import React from "react";
+import { Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Post.css";
@@ -20,7 +23,19 @@ const Post = ({ post }) => {
           <p style={{ whiteSpace: "pre-wrap", overflowWrap: "break-word" }}>
             {post.content}
           </p>
-          <p>Comment as {}</p>
+          <Row>
+            <Col className="sm-6">
+              <span className="mx-2">
+                <i className="fas fa-thumbs-up"></i>
+              </span>
+              <span className="mx-2">
+                <i className="fas fa-thumbs-down"></i>
+              </span>
+              <Link className="mx-2" to={`/posts/${post._id}`}>
+                Comments
+              </Link>
+            </Col>
+          </Row>
         </Card.Text>
       </Card.Body>
     </Card>
