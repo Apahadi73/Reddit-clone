@@ -8,7 +8,7 @@ import _ from "lodash";
 // @access  Public
 const getPosts = asyncHandler(async (req, res) => {
   // finds all the post from the db
-  const posts = await Post.find({});
+  const posts = await Post.find({}).sort({ createdAt: -1 });
   res.json(posts);
 });
 
