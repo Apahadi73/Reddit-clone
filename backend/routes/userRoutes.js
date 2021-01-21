@@ -6,13 +6,13 @@ import {
   getUserProfile,
   updateUserProfile,
 } from "../controllers/userController.js";
-import { protect, admin } from "../middleware/authMiddleware.js";
+import { authenticate } from "../middleware/authMiddleware.js";
 
 router.route("/").post(registerUser);
 router.post("/login", authUser);
 router
   .route("/profile")
-  .get(protect, getUserProfile)
-  .put(protect, updateUserProfile);
+  .get(authenticate, getUserProfile)
+  .put(authenticate, updateUserProfile);
 
-export default router;
+export { router as userRoutes };

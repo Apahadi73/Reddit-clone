@@ -8,17 +8,13 @@ import generateToken from "../utils/generateToken.js";
 // @route   POST /api/users/login
 // @access  Public
 const authUser = asyncHandler(async (req, res) => {
-  console.log(`Request body: ${req.body}`.green);
   const { email, password } = req.body;
-
   const user = await User.findOne({ email });
-
   if (user && (await user.matchPassword(password))) {
     res.json({
       _id: user._id,
       name: user.name,
       email: user.email,
-      isAdmin: user.isAdmin,
       token: generateToken(user._id),
     });
   } else {
@@ -38,7 +34,7 @@ const registerUser = asyncHandler(async (req, res) => {
   // if user already exist, throw error
   if (userExists) {
     res.status(400);
-    throw new Error("User already exists");
+    throw new Error("Email address already used");
   }
 
   // else create new user in the db
