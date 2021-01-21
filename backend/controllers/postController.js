@@ -1,6 +1,7 @@
 import asyncHandler from "express-async-handler";
 import Post from "../models/Post.js";
 import User from "../models/User.js";
+import _ from "lodash";
 
 // @desc    Fetch all posts
 // @route   GET /api/posts
@@ -137,20 +138,23 @@ const likePost = asyncHandler(async (req, res) => {
   if (post) {
     // checks whether user is in the like array or not
     if (post.likes.includes(user)) {
-      res.status(200);
-      throw new Error("You already liked this post.");
+      res.status(200).json({
+        message: "You already liked this post!",
+        likesNum: _.size(post.likes),
+      });
+    } else {
+      // checks whether user is in the likes array or not
+      // if yes, remove user from the likes array and push user into dislikes array
+      if (post.dislikes.includes(user)) {
+        post.dislikes.filter((userId) => userId.toString() !== user.toString());
+        console.log(post.dislikes);
+      }
+      post.likes.push(user);
+      await post.save();
+      res
+        .status(201)
+        .json({ message: "Comment liked", likesNum: _.size(post.likes) });
     }
-
-    // TODO: work on this logic. need refinement since user is being added in both
-    // checks whether user is in the likes array or not
-    // if yes, remove user from the likes array and push user into dislikes array
-    if (post.dislikes.includes(user)) {
-      post.dislikes.filter((userId) => userId.toString() !== user.toString());
-      console.log(post.dislikes);
-    }
-    post.likes.push(user);
-    await post.save();
-    res.status(201).json({ message: "Comment liked" });
   } else {
     res.status(404);
     throw new Error("Something went wrong!");
@@ -169,19 +173,24 @@ const dislikePost = asyncHandler(async (req, res) => {
   if (post) {
     // checks whether user is in the like array or not
     if (post.dislikes.includes(user)) {
-      res.status(200);
-      throw new Error("You already disliked this post.");
+      res.status(200).json({
+        message: "You already disliked this post!",
+        dislikesNum: _.size(post.dislikes),
+      });
+    } else {
+      // checks whether user is in the dislikes array or not
+      // if yes, remove user from the dislike array and push user into likes array
+      if (post.likes.includes(user)) {
+        post.likes.filter((userId) => userId.toString() !== user.toString());
+        console.log(post.likes);
+      }
+      post.dislikes.push(user);
+      await post.save();
+      res.status(201).json({
+        message: "Comment disliked",
+        dislikesNum: _.size(post.dislikes),
+      });
     }
-
-    // checks whether user is in the dislikes array or not
-    // if yes, remove user from the dislike array and push user into likes array
-    if (post.likes.includes(user)) {
-      post.likes.filter((userId) => userId.toString() !== user.toString());
-      console.log(post.likes);
-    }
-    post.dislikes.push(user);
-    await post.save();
-    res.status(201).json({ message: "Comment disliked" });
   } else {
     res.status(404);
     throw new Error("Something went wrong!");

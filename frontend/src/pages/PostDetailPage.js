@@ -5,6 +5,9 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Comment from "../components/UIElements/Comment";
 import CommentBox from "../components/UIElements/CommentBox";
+import DislikeButton from "../components/UIShared/DislikeButton";
+import LikeButton from "../components/UIShared/LikeButton";
+import _ from "lodash";
 
 export const PostDetailPage = ({ match }) => {
   const [post, setpost] = useState({});
@@ -37,12 +40,11 @@ export const PostDetailPage = ({ match }) => {
             </p>
             <Row className="my-3">
               <Col className="sm-6">
-                <span className="mx-2">
-                  <i className="fas fa-thumbs-up"></i>
-                </span>
-                <span className="mx-2">
-                  <i className="fas fa-thumbs-down"></i>
-                </span>
+                <LikeButton id={match.params.id} likes={_.size(post.likes)} />
+                <DislikeButton
+                  id={match.params.id}
+                  dislikes={_.size(post.dislikes)}
+                />
                 <span className="mx-2">{comments.length} Comments</span>
               </Col>
             </Row>

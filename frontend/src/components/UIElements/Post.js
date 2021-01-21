@@ -6,6 +6,8 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import _ from "lodash";
 import "./Post.css";
+import LikeButton from "../UIShared/LikeButton";
+import DislikeButton from "../UIShared/DislikeButton";
 
 const Post = ({ post }) => {
   const commentsNum = _.size(post.comments);
@@ -27,12 +29,8 @@ const Post = ({ post }) => {
           </p>
           <Row>
             <Col className="sm-6">
-              <span className="mx-2">
-                <i className="fas fa-thumbs-up"></i>
-              </span>
-              <span className="mx-2">
-                <i className="fas fa-thumbs-down"></i>
-              </span>
+              <LikeButton id={post._id} likes={_.size(post.likes)} />
+              <DislikeButton id={post._id} dislikes={_.size(post.dislikes)} />
               <Link className="mx-2" to={`/posts/${post._id}`}>
                 {commentsNum} Comments
               </Link>
