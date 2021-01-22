@@ -10,7 +10,7 @@ import store from "./state/store";
 import axios from "axios";
 
 if (process.env.NODE_ENV === "production") {
-  axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
+  axios.defaults.baseURL = "https://socio-backend.herokuapp.com/";
 } else {
   axios.defaults.baseURL = "http://localhost:5001/";
 }

@@ -2,10 +2,10 @@ import axios from "axios";
 import React from "react";
 
 function DislikeButton({ id, dislikes }) {
+  // gets userinfo from the local storage
+  const userInfo = localStorage.getItem("userInfo");
   const onDisliked = async () => {
     try {
-      // gets userinfo from the local storage
-      const userInfo = localStorage.getItem("userInfo");
       const { _id, token } = JSON.parse(userInfo);
       const config = {
         headers: {

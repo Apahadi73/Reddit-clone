@@ -11,7 +11,7 @@ import _ from "lodash";
 
 export const PostDetailPage = ({ match }) => {
   const [post, setpost] = useState({});
-  const [comments, setComments] = useState({});
+  const [comments, setComments] = useState([]);
   const userInfo = localStorage.getItem("userInfo");
 
   useEffect(() => {
@@ -49,7 +49,8 @@ export const PostDetailPage = ({ match }) => {
                 <span className="mx-2">{comments.length} Comments</span>
               </Col>
             </Row>
-            <CommentBox />
+            {!userInfo && <Link to="/login">Login to comment</Link>}
+            {userInfo && <CommentBox />}
           </Card.Text>
 
           {comments.length > 0 && (

@@ -9,7 +9,8 @@ import { fetchPostList } from "../state/actions/postActions";
 const HomePage = () => {
   const dispatch = useDispatch();
   const postList = useSelector((state) => state.postList);
-  const { loading, error, posts } = postList;
+  let { loading, error, posts } = postList;
+  posts = Object.values(posts);
 
   useEffect(() => {
     dispatch(fetchPostList());
