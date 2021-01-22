@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Comment from "../components/UIElements/Comment";
 import CommentBox from "../components/UIElements/CommentBox";
 import DislikeButton from "../components/UIShared/DislikeButton";
@@ -12,6 +12,7 @@ import _ from "lodash";
 export const PostDetailPage = ({ match }) => {
   const [post, setpost] = useState({});
   const [comments, setComments] = useState({});
+  const userInfo = localStorage.getItem("userInfo");
 
   useEffect(() => {
     const fetchpost = async () => {

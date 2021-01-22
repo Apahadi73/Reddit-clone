@@ -37,7 +37,6 @@ function CommentBox() {
         content: comment,
         user: _id,
       };
-      console.log(newComment);
       dispatch(createComment(newComment, id));
       // reload the page
       window.location.reload(false);
@@ -64,7 +63,11 @@ function CommentBox() {
               placeholder="Type your comment here ..."
             />
           </Form.Group>
-          <Button variant="primary" onClick={onSubmitButtonPressed}>
+          <Button
+            disabled={userInfo === null}
+            variant="primary"
+            onClick={onSubmitButtonPressed}
+          >
             Post
           </Button>
         </Form>

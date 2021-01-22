@@ -8,20 +8,23 @@ import { PostDetailPage } from "./pages/PostDetailPage";
 import LoginScreen from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import NewPostPage from "./pages/NewPostPage";
+import Switch from "react-bootstrap/esm/Switch";
 
 function App() {
   return (
     <Router>
       <Header />
-      <main className="py-4">
-        <Container>
-          <Route path="/" component={HomePage} exact />
-          <Route path="/login" exact component={LoginScreen} />
-          <Route path="/register" exact component={RegisterPage} />
-          <Route path="/posts/:id" exact component={PostDetailPage} />
-          <Route path="/newpost" component={NewPostPage} exact />
-        </Container>
-      </main>
+      <Container className="pl-0">
+        <main>
+          <Switch>
+            <Route path="/" component={HomePage} exact />
+            <Route path="/login" exact component={LoginScreen} />
+            <Route path="/register" exact component={RegisterPage} />
+            <Route path="/posts/:id" exact component={PostDetailPage} />
+            <Route path="/newpost" component={NewPostPage} exact />
+          </Switch>
+        </main>
+      </Container>
       <Footer />
     </Router>
   );

@@ -35,9 +35,10 @@ const Header = () => {
                   <i className="fas fa-edit" style={{ fontSize: "2rem" }}></i>
                 </Link>
                 <NavDropdown title={userInfo.name} id="userName">
-                  <NavDropdown.Item>
+                  {/* TODO: work on this later on */}
+                  {/* <NavDropdown.Item>
                     <Link to="#">Profile</Link>
-                  </NavDropdown.Item>
+                  </NavDropdown.Item> */}
                   <NavDropdown.Item onClick={logoutHandler}>
                     Log Out
                   </NavDropdown.Item>

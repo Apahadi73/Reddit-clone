@@ -3,10 +3,10 @@ import { Card } from "react-bootstrap";
 
 function Comment({ comment, userName }) {
   return (
-    <Card className="m-3">
-      <Card.Body>
+    <Card className="my-2">
+      <Card.Body className="py-1 ">
         <p>{comment}</p>
-        <p className="creator">Posted by {userName}</p>
+        <p className="creator ">Posted by {userName}</p>
       </Card.Body>
     </Card>
   );
